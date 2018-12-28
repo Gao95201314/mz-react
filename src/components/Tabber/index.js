@@ -1,5 +1,6 @@
 import React from 'react';
-import './index.less';
+import { NavLink } from 'react-router-dom';
+import './index.scss';
 
 class Tabber extends React.Component{
   render(){
@@ -8,10 +9,12 @@ class Tabber extends React.Component{
       {
         this.props.tab.map(item=>{
           return (
-            <li className={['gao-tabber-item',this.props.curTab===item.id?'z-act':''].join(' ')} 
-            key={item.id}
-            onClick={()=>{this.props.hh(item.id)}}>
-            {item.name}</li>
+            <li className='gao-tabber-item'
+            key={item.id}>
+            <NavLink to={item.href}>
+            {item.name}
+            </NavLink>
+            </li>
           )
         })
       }

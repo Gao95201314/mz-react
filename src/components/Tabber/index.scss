@@ -1,14 +1,18 @@
 .gao-tabber{
+  position: sticky;
   display:flex;
   height:50px;
   line-height: 50px;
   background: #fff;
   border-bottom: 1px solid #000;
-  .gao-tabber-item{
+  &-item{
     flex:1;
     text-align: center;
-    &.z-act{
-      color:red;
+    a{
+      text-decoration: none;
+      &.active{
+        color:red;
+      }
     }
   }
 }
