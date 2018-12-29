@@ -1,78 +1,44 @@
-import React from 'react';
-import { List, InputItem, WhiteSpace,Button,Flex,Icon,Toast} from 'antd-mobile';
-import store from '@/store';
+import {connect} from 'react-redux';
+import UI from './ui';
 
-class Todo extends React.Component {
-  constructor(props){
-    super();
-    this.state={
-      value:'',
-      myTodo :store.getState().todos,
-    }
-    this.handleVal=this.handleVal.bind(this);
-    this.addTodo=this.addTodo.bind(this);
-    //监听仓库的变化
-    store.subscribe(()=>{
-      this.setState({
-        myTodo :store.getState().todos,
-      })
-    })
-  }
-  handleVal(val){
-  this.setState({
-    value:val
-  })
-  }
-  addTodo(){
-    if(!this.state.value){
-      Toast.info('请输入内容！',1,()=>{
-        //让input主动获取焦点
-        this.refs['myInput'].focus();
-      });
-      return; 
-    }
-    //派发一个动作
-    store.dispatch({
-      type:'ADD_TODO',
-      name:this.state.value
-    })
-    //清空value
-    this.setState({
-      value:'',
-    })
-  }
-  deleteTodo(i){
-    store.dispatch({
-      type:'DELETE_TODO',
-      index:i,
-    })
-  }
-  render() {
-    return (
-      <div className="todo">
-      <Flex>
-      <Flex.Item style={{flex:3}}>
-      <InputItem type="text" ref="myInput" placeholder="输入内容" value={this.state.value} onChange={this.handleVal}></InputItem>
-      </Flex.Item>
-      <Flex.Item style={{flex:1}}><Button type="primary" onClick={this.addTodo}>添加</Button> </Flex.Item>
-      </Flex>
-      <WhiteSpace></WhiteSpace>
-      <List>
-        {
-        this.state.myTodo.map((item,index) => {
-          return (
-            <List.Item key={index} 
-            extra={<Icon type="cross-circle" onClick={this.deleteTodo.bind(this,index)}></Icon>}
-            >
-            {item}
-            </List.Item>
-          )
-        })
-      }
-      </List>
-      </div>
-    )
+/*
+  这个方法是用来映射 redux 仓库中的 state 怎么传递到 UI 组件
+
+  state 参数就 是  store.getState() 返回的值，也就是仓库中的 state
+*/
+const mapStateToProps=(state)=>{
+  return {
+    myTodo:state.todos
   }
 }
 
-export default Todo;
+const mapDisoatchProps=(dispatch)=>{
+  return {
+    /**
+     * name 是 ui组件传递过来的
+     */
+    addTodo:(name)=>{
+      dispatch({
+        type:'ADD_TODO',
+        // name:name
+        name
+      })
+
+    },
+    /**
+     * i 是 下标，也是 需要 ui组件那边传递过来
+     */
+    deleteTodo:(i)=>{
+      dispatch({
+        type:'DELETE_TODO',
+        index:i
+      })
+    }
+  }
+}
+
+export default connect(
+  mapStateToProps,
+  mapDisoatchProps
+)(UI);
+
