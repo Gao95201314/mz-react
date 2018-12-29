@@ -1,5 +1,5 @@
 import {connect} from 'react-redux';
-import UI from './UI';
+import UI from './ui';
 
 
 const mapStateToProps=(state)=>{

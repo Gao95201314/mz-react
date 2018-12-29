@@ -13,6 +13,13 @@ const mapStateToProps=(state)=>{
 }
 
 const mapDisoatchProps=(dispatch)=>{
+  //自已写的中间件
+  /* let next=dispatch;
+  dispatch=function(action){
+    console.log(111);
+    next(action);
+    console.log(222);
+  } */
   return {
     /**
      * name 是 ui组件传递过来的
