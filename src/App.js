@@ -3,7 +3,7 @@ import { HashRouter as Router, Route, Switch } from 'react-router-dom';
 import store from './store';
 import Home from './views/Home';
 import City from './views/City';
-import { setCity2,setCity} from '@/store/actions';
+// import { setCity2,setCity} from '@/store/actions';
 
 class App extends React.Component {
   componentDidMount(){

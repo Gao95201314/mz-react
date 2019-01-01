@@ -2,15 +2,48 @@ import React, { Component } from 'react';
 import {Link} from 'react-router-dom';
 import store from '@/store';
 import './index.scss';
+import axios from 'axios';
 export default class City extends Component {
   constructor(props){
-    super();
+    super(props);
     this.state={
       curCity:store.getState().city.curCity,
+      cities:{},
+      moving: false,
+      labels: ['A', 'B', 'C', 'D', 'E', 'F', 'G', 'H', 'I', 'J', 'K', 'L', 'M', 'N', 'O', 'P', 'Q', 'R', 'S', 'T', 'U', 'V', 'W', 'X', 'Y', 'Z'],
     }
     store.subscribe(()=>{
       this.setState({
         curCity:store.getState().city.curCity
+      })
+    })
+  }
+  changeCity(val){
+    store.dispatch({
+      type:'SET_CURCITY',
+      name:val
+    })
+  }
+  componentWillMount(){
+    axios.get('http://localhost:3000/api/cities.json').then(response=>{
+      let result=response.data;
+      // console.log(result);
+      let cityObj = {'A': [], 'B': [], 'C': [], 'D': [], 'E': [], 'F': [], 'G': [], 'H': [], 'I': [], 'J': [], 'K': [], 'L': [], 'M': [], 'N': [], 'O': [], 'P': [], 'Q': [], 'R': [], 'S': [], 'T': [], 'U': [], 'V': [], 'W': [], 'X': [], 'Y': [], 'Z': []};
+      let city = {};
+      result.forEach(item=>{
+        for(var key in cityObj){
+          if(key===item.pinyin.substring(0,1).toUpperCase()){
+            cityObj[key].push(item);
+          }
+        }
+      })
+      for(var key in cityObj){
+        if(cityObj[key].length>0){
+          city[key]=cityObj[key];
+        }
+      }
+      this.setState({
+        cities:city,
       })
     })
   }
@@ -24,95 +57,33 @@ export default class City extends Component {
       </div>
       <div className="lv-indexlist">
           <ul className="lv-indexlist__content">
-            <li className="lv-indexsection">
-              <p className="lv-indexsection__index">A</p>
+            {
+              Object.keys(this.state.cities).map((letter,index1)=>{
+                return <li className="lv-indexsection" key={index1}>
+              <p className="lv-indexsection__index">{letter}</p>
               <ul>
-                <li>鞍山</li>
-                <li>安庆</li>
-                <li>安阳</li>
-                <li>安顺</li>
-                <li>安康</li>
+                {
+                  this.state.cities[letter].map((item,index2)=>{
+                    return <li key={index2} onClick={this.changeCity.bind(this,item.name)}>{item.name}</li>
+                  })
+                }
               </ul>
             </li>
-            <li className="lv-indexsection">
-              <p className="lv-indexsection__index">B</p>
-              <ul>
-                <li>鞍山</li>
-                <li>安庆</li>
-                <li>安阳</li>
-                <li>安顺</li>
-                <li>安康</li>
-              </ul>
-            </li>
-            <li className="lv-indexsection">
-              <p className="lv-indexsection__index">C</p>
-              <ul>
-                <li>鞍山</li>
-                <li>安庆</li>
-                <li>安阳</li>
-                <li>安顺</li>
-                <li>安康</li>
-              </ul>
-            </li>
-            <li className="lv-indexsection">
-              <p className="lv-indexsection__index">D</p>
-              <ul>
-                <li>鞍山</li>
-                <li>安庆</li>
-                <li>安阳</li>
-                <li>安顺</li>
-                <li>安康</li>
-              </ul>
-            </li>
-            <li className="lv-indexsection">
-              <p className="lv-indexsection__index">E</p>
-              <ul>
-                <li>鞍山</li>
-                <li>安庆</li>
-                <li>安阳</li>
-                <li>安顺</li>
-                <li>安康</li>
-                <li>安康</li>
-                <li>安康</li>
-                <li>安康</li>
-                <li>安康</li>
-                <li>安康</li>
-                <li>安康</li>
-              </ul>
-            </li>
+            })
+            }
           </ul>
-          <div className="lv-indexlist__nav">
-            <ul>
-              <li>A</li>
-              <li>B</li>
-              <li>C</li>
-              <li>D</li>
-              <li>E</li>
-              <li>F</li>
-              <li>G</li>
-              <li>H</li>
-              <li>I</li>
-              <li>J</li>
-              <li>K</li>
-              <li>L</li>
-              <li>M</li>
-              <li>N</li>
-              <li>O</li>
-              <li>P</li>
-              <li>Q</li>
-              <li>R</li>
-              <li>S</li>
-              <li>T</li>
-              <li>U</li>
-              <li>V</li>
-              <li>W</li>
-              <li>X</li>
-              <li>Y</li>
-              <li>Z</li>
-            </ul>
+          
+      <div className="lv-indexlist__nav">
+           <ul>
+             {
+               this.state.labels.map((item,index)=>{
+                 return <li key={index} onClick={this.findCity}>{item}</li>
+               })
+             }
+            </ul> 
           </div>
+        </div>  
         </div>
-      </div>
     )
   }
 }
