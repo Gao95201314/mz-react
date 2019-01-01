@@ -1,0 +1,55 @@
+@import '@/styles/common/px2rem.scss';
+.cinemas-list {
+  flex: 1;
+  .header {
+    line-height: px2rem(50);
+    height: px2rem(50);
+    span {
+      font-size: px2rem(20);
+    }
+    .ding{
+      font-size: px2rem(16);
+      margin-left:px2rem(10);
+    }
+    .itheme{
+      margin-left:px2rem(100);
+    }
+  }
+  .search{
+  height: px2rem(72);
+  padding: px2rem(10);
+  background:white;
+}
+  .list {
+    overflow: hidden;
+    position: absolute;
+    top: px2rem(120);
+    left: 0;
+    right: 0;
+    bottom: 0;
+    .contact {
+      display: flex;
+      flex: 1;
+      justify-content: space-between;
+      font-size: px2rem(16);
+      height: px2rem(50);
+      margin-top: px2rem(10);
+      .left p:nth-child(2) {
+        color: #666;
+        font-size: px2rem(14);
+        margin-top: px2rem(5);
+        text-overflow: ellipsis;
+        overflow: hidden;
+        white-space: nowrap;
+        width:px2rem(270);
+      }
+      .right p:nth-child(1) {
+        color: orange;
+      }
+      .right p:nth-child(2) {
+        color: #666;
+        margin-top: px2rem(5);
+      }
+    }
+  }
+}

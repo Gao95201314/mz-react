@@ -1,0 +1,17 @@
+@import './common/reset.scss';
+@import './common/var.scss';
+html,body{
+    height: 100%;
+}
+.app{
+    display: flex;
+    flex-direction: column;
+    height:100%;
+    width:100%;
+}
+
+body{
+    font-size:16px;
+    width:16rem;
+    margin:0 auto;
+}

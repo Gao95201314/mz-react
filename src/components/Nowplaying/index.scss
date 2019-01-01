@@ -1,46 +1,46 @@
-
+@import '@/styles/common/px2rem.scss';
 .film-list-content {
   li {
     display: flex;
-    margin: 0 15px;
-    padding: 15px 0;
-    border-bottom: 1px solid #ededed;
+    margin: 0 px2rem(15);
+    padding: px2rem(15) 0;
+    border-bottom: px2rem(1) solid #ededed;
   }
 
   .img {
     flex-shrink: 0;
-    width: 66px;
-    height: 94px;
+    width: px2rem(66);
+    height: px2rem(94);
     img {
       width: 100%;
     }
   }
 
   .info {
-    min-width: 100px;
-    padding: 0 10px;
-    font-size: 14px;
+    min-width:px2rem(100);
+    padding: 0 px2rem(10);
+    font-size: px2rem(14);
     &>div {
       width: 100%;
-      height: 22px;
-      line-height: 22px;
+      height: px2rem(22);
+      line-height: px2rem(22);
       white-space: nowrap;
       overflow: hidden;
       text-overflow: ellipsis;
     }
     .label {
       color: #797d82;
-      margin-right: 2px;
+      margin-right: px2rem(2);
     }
     .name {
-      font-size: 16px;
+      font-size: px2rem(16);
       color: #191a1b;
     }
     .type {
-      font-size: 12px;
+      font-size: px2rem(12);
       color: #fff;
       background: #d2d6dc;
-      padding: 0 2px;
+      padding: 0 px2rem(2);
     }
     .grade {
       color: #ffb232;
@@ -50,13 +50,13 @@
   .buy {
     flex-shrink: 0;
     align-self: center;
-    width: 50px;
-    height: 26px;
-    line-height: 26px;
-    font-size: 14px;
+    width: px2rem(50);
+    height: px2rem(26);
+    line-height: px2rem(26);
+    font-size: px2rem(14);
     color: #ff5f16;
-    border: 1px solid #ff5f16;
+    border: px2rem(1) solid #ff5f16;
     text-align: center;
-    border-radius: 4px;
+    border-radius: px2rem(4);
   }
 }

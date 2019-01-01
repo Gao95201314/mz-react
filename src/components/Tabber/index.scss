@@ -1,15 +1,18 @@
+@import '@/styles/common/px2rem.scss';
 .gao-tabber{
   position: sticky;
   top:0;
   display:flex;
-  height:50px;
-  line-height: 50px;
+  height:px2rem(50);
+  line-height: px2rem(50);
   background: #fff;
-  border-bottom: 1px solid #ccc;
+  border-bottom:px2rem(1) solid #ccc;
   &-item{
     flex:1;
     text-align: center;
+    font-size: px2rem(16);
     a{
+      color:black;
       text-decoration: none;
       &.active{
         color:red;
