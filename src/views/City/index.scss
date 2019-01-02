@@ -14,6 +14,25 @@
       text-decoration: none;
     }
   }
+  .am-search{
+    height:px2rem(40);
+    .am-search-input{
+      height:px2rem(40);
+      .am-search-synthetic-ph-placeholder{
+        height:px2rem(40);
+        line-height: px2rem(40);
+        font-size: px2rem(18);
+      }
+      .am-search-value{
+        height:px2rem(40);
+        font-size: px2rem(18);
+      }
+      .am-search-clear-show{
+        height:px2rem(40);
+        width:px2rem(40);
+      }
+    }
+  }
 }
 
 .lv-indexlist {

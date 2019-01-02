@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import {Link} from 'react-router-dom';
+import { SearchBar, Button, WhiteSpace} from 'antd-mobile';
 import store from '@/store';
 import './index.scss';
 import axios from 'axios';
@@ -18,12 +19,14 @@ export default class City extends Component {
       })
     })
   }
+  //城市选择
   changeCity(val){
     store.dispatch({
       type:'SET_CURCITY',
       name:val
     })
   }
+  //城市列表
   componentWillMount(){
     axios.get('http://localhost:3000/api/cities.json').then(response=>{
       let result=response.data;
@@ -55,6 +58,8 @@ export default class City extends Component {
       <div className="curCity">当前城市-{this.state.curCity}</div>
       <div className="ll"></div>
       </div>
+      <SearchBar placeholder="请输入拼音或者城市名"/>
+      <WhiteSpace />
       <div className="lv-indexlist">
           <ul className="lv-indexlist__content">
             {
