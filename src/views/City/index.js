@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import {Link} from 'react-router-dom';
-import { SearchBar, Button, WhiteSpace} from 'antd-mobile';
+import { SearchBar,WhiteSpace, Toast} from 'antd-mobile';
 import store from '@/store';
 import './index.scss';
 import axios from 'axios';
@@ -13,7 +13,7 @@ export default class City extends Component {
       moving: false,
       labels: ['A', 'B', 'C', 'D', 'E', 'F', 'G', 'H', 'I', 'J', 'K', 'L', 'M', 'N', 'O', 'P', 'Q', 'R', 'S', 'T', 'U', 'V', 'W', 'X', 'Y', 'Z'],
     }
-    store.subscribe(()=>{
+    this.unsubscribe=store.subscribe(()=>{
       this.setState({
         curCity:store.getState().city.curCity
       })
@@ -25,6 +25,18 @@ export default class City extends Component {
       type:'SET_CURCITY',
       name:val
     })
+  }
+  //锚点定位
+  srcollCity=(cityLetter)=>{
+    Toast.info(cityLetter,0.6);
+    if(cityLetter){
+      //找到锚点
+      let otherElement=document.getElementById(cityLetter);
+      // 如果对应id的锚点存在，就跳转到锚点
+      if(otherElement){
+        otherElement.scrollIntoView({block:'start',behavior:'smooth'});
+      }
+    }
   }
   //城市列表
   componentWillMount(){
@@ -50,6 +62,10 @@ export default class City extends Component {
       })
     })
   }
+  //撤销
+  componentWillUnmount(){
+    this.unsubscribe();
+  }
   render() {
     return (
       <div className="lv-city">
@@ -65,7 +81,7 @@ export default class City extends Component {
             {
               Object.keys(this.state.cities).map((letter,index1)=>{
                 return <li className="lv-indexsection" key={index1}>
-              <p className="lv-indexsection__index">{letter}</p>
+              <p className="lv-indexsection__index" id={letter}>{letter}</p>
               <ul>
                 {
                   this.state.cities[letter].map((item,index2)=>{
@@ -82,7 +98,7 @@ export default class City extends Component {
            <ul>
              {
                this.state.labels.map((item,index)=>{
-                 return <li key={index} onClick={this.findCity}>{item}</li>
+                 return <li key={index} onClick={this.srcollCity.bind(this,item)}>{item}</li>
                })
              }
             </ul> 
