@@ -1,0 +1,114 @@
+@import '@/styles/common/px2rem.scss';
+.center-view {
+  flex: 1;
+  a{
+    color: #191a1b;
+  }
+}
+
+#header {
+  height: px2rem(200);
+  background: url('~@/images/266643.jpg') no-repeat;
+  background-size: 100%;
+  display: flex;
+  .tou {
+    height: px2rem(67);
+    width: px2rem(67);
+    border: px2rem(2) solid white;
+    border-radius: 50%;
+    align-self: center;
+    margin-left: px2rem(20);
+    .iconfont {
+      font-size: px2rem(60);
+      color:turquoise;
+    }
+  }
+  h2 {
+    font-size: px2rem(24);
+    align-self: center;
+    margin-left: px2rem(20);
+    a {
+      color: white;
+    }
+  }
+}
+#main {
+  flex: 1;
+  display: flex;
+  background: #f4f4f4;
+  flex-direction: column;
+  .dingdan {
+    display: flex;
+    height: px2rem(80);
+    h3 {
+      background: white;
+      flex: 1;
+      display: flex;
+      flex-direction: column;
+      text-align: center;
+      i {
+        font-size: px2rem(26);
+        margin: px2rem(8) 0;
+      }
+      span {
+        font-size: px2rem(20);
+        color:block;
+      }
+      .icon-dingdan{
+        color:orange;
+      }
+      .icon-pintuan{
+        color:greenyellow;
+      }
+    }
+  }
+  .ul {
+    display: flex;
+    flex: 1;
+    border-top: px2rem(10) solid #f4f4f4;
+    flex-direction: column;
+    .card,
+    .balace,
+    .set {
+      padding: 0 px2rem(15);
+      background: white;
+      height: px2rem(50);
+      border-bottom: px2rem(1) solid #f4f4f4;
+      display: flex;
+      .list {
+        flex: 1;
+        display: flex;
+        align-items: center;
+        i {
+          font-size: px2rem(20);
+        }
+        span {
+          font-size: px2rem(20);
+          margin-left: px2rem(10);
+        }
+        .icon-ziyuan{
+          color: rgb(245, 89, 89);
+        }
+        .icon-yue{
+          color: red;
+        }
+        .icon-shezhi{
+          color: rgb(15, 235, 52);
+        }
+      }
+      .list1 {
+        flex: 1;
+        display: flex;
+        align-items: center;
+        justify-content: flex-end;
+        i {
+          font-size: px2rem(14);
+        }
+        p {
+          font-size: px2rem(16);
+          color: #444;
+        }
+      }
+    }
+  }
+}
