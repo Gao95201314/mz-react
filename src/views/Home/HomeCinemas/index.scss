@@ -37,17 +37,19 @@
     bottom: 0;
     background: white;
     .contact {
+      z-index: 999;
       display: flex;
       flex: 1;
       justify-content: space-between;
-      font-size: px2rem(16);
+      font-size: px2rem(15);
       height: px2rem(50);
       margin-top: px2rem(10);
-      border-bottom: 1px solid #c0c0c0;
+      border-bottom: 1px solid #ededed;
+      color:black;
       .left p:nth-child(2) {
-        color: #666;
+        color: #797d82;
         font-size: px2rem(14);
-        margin-top: px2rem(5);
+        margin-top: px2rem(8);
         text-overflow: ellipsis;
         overflow: hidden;
         white-space: nowrap;
@@ -57,7 +59,7 @@
         color: orange;
       }
       .right p:nth-child(2) {
-        color: #666;
+        color: #797d82;
         margin-top: px2rem(5);
       }
     }
