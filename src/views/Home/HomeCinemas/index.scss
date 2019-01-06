@@ -1,0 +1,67 @@
+@import '@/styles/common/px2rem.scss';
+.cinemas-list {
+  flex: 1;
+  .header {
+    background: white;
+    line-height:px2rem(50);
+    height: px2rem(50);
+    display:flex;
+    justify-content: space-between;
+    .iconfont{
+      font-size:px2rem(20);
+    }
+    span {
+      font-size: px2rem(20);
+    }
+    a{
+      color:aqua;
+    }
+  }
+  .allcity{
+    display:flex;
+    justify-content: space-around;
+    font-size:px2rem(16);
+    background: white;
+    line-height: px2rem(50);
+    color: #191a1b;
+    p{
+      .iconfont{
+        font-size:px2rem(20);
+      }
+    }
+  }
+  .list {
+    overflow: hidden;
+    position: absolute;
+    top: px2rem(100);
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: white;
+    .contact {
+      display: flex;
+      flex: 1;
+      justify-content: space-between;
+      font-size: px2rem(16);
+      height: px2rem(50);
+      margin-top: px2rem(10);
+      border-bottom: 1px solid #c0c0c0;
+      .left p:nth-child(2) {
+        color: #666;
+        font-size: px2rem(14);
+        margin-top: px2rem(5);
+        text-overflow: ellipsis;
+        overflow: hidden;
+        white-space: nowrap;
+        width:px2rem(270);
+      }
+      .right p:nth-child(1) {
+        color: orange;
+      }
+      .right p:nth-child(2) {
+        color: #666;
+        margin-top: px2rem(5);
+      }
+    }
+  }
+}
