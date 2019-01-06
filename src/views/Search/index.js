@@ -35,14 +35,13 @@ class HomeCinemas extends React.Component {
       this.setState({
         listres: res.data
       })
-      console.log(this.state.listres);
     })
   }
   render() {
     return (
       <div className="gao-search">
         <div className="gao-search-header">
-          <i className="iconfont icon-zuojiantou"></i>
+          <Link to="/cinemas"><i className="iconfont icon-zuojiantou"></i></Link>
           <input type="search" ref="inp" placeholder="输入影院名称" onChange={this.inpVal.bind(this)} />
           <span>取消</span>
         </div>

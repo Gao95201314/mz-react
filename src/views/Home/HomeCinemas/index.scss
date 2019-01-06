@@ -7,14 +7,12 @@
     height: px2rem(50);
     display:flex;
     justify-content: space-between;
+    padding:0 px2rem(10);
     .iconfont{
       font-size:px2rem(20);
     }
     span {
       font-size: px2rem(20);
-    }
-    a{
-      color:aqua;
     }
   }
   .allcity{

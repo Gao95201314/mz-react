@@ -13,7 +13,6 @@ class HomeCinemas extends React.Component {
   componentDidMount() {
     this.scroll = new BScroll(this.refs.wrapper);
     axios.get('http://localhost:3000/api/cinemas.json').then(res => {
-      console.log(res.data);
       this.setState({
         list: res.data
       })
